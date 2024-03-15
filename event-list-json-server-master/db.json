@@ -1,16 +1,10 @@
 {
   "events": [
     {
-      "eventName": "Food Festival",
-      "startDate": "2023-02-01",
-      "endDate": "2023-02-02",
-      "id": "30a8"
-    },
-    {
-      "eventName": "sdssdd",
-      "startDate": "2024-03-15",
-      "endDate": "2024-03-06",
-      "id": "AFguzg8"
+      "eventName": "kpop",
+      "startDate": "2024-03-11",
+      "endDate": "2024-03-29",
+      "id": 1
     }
   ]
 }

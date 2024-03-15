@@ -1,3 +1,6 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -5,5 +8,66 @@ table {
   border-radius: 20px;
   border-color: blanchedalmond;
   border-style: solid;
+}
+.event-table th,
+.event-table td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.event-table th {
+  background-color: #f9f9f9;
+}
+.event-table td {
+  background-color: #f5d15b;
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+}
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  width: 80%;
+}
+.addEventButton {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(41, 158, 221);
+  color: white;
+  border: none;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: large;
+}
+.addEventButton:hover {
+  background-color: rgb(92, 151, 206);
+  cursor: pointer;
+}
+.editButton,
+.deleteButton,
+.updateButton,
+.cancelButton,
+.createButton {
+  width: 60px;
+  border-radius: 15px;
+  background-color: #008cba;
+  border: none;
+}
+
+.editButton,
+.deleteButton,
+.updateButton,
+.cancelButton,
+.createButton :hover {
+  cursor: pointer;
+  background-color: #008cba;
+  color: white;
+}
+.deleteButton {
+  background-color: #c94c4c;
 }
 

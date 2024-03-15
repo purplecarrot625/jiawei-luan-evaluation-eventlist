@@ -30,8 +30,8 @@ class EventListView {
         <td><input type="date" value="${startDate}"></td>
         <td><input type="date" value="${endDate}"></td>
         <td>
-          <button class="updateButton" data-id="${eventId}">Update</button>
-          <button class="cancelButton">Cancel</button>
+          <button class="updateButton" data-id="${eventId}"><svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21,20V8.414a1,1,0,0,0-.293-.707L16.293,3.293A1,1,0,0,0,15.586,3H4A1,1,0,0,0,3,4V20a1,1,0,0,0,1,1H20A1,1,0,0,0,21,20ZM9,8h4a1,1,0,0,1,0,2H9A1,1,0,0,1,9,8Zm7,11H8V15a1,1,0,0,1,1-1h6a1,1,0,0,1,1,1Z"/></svg>Update</button>
+          <button class="cancelButton"><svg focusable="false" aria-hidden="true" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M19.587 16.001l6.096 6.096c0.396 0.396 0.396 1.039 0 1.435l-2.151 2.151c-0.396 0.396-1.038 0.396-1.435 0l-6.097-6.096-6.097 6.096c-0.396 0.396-1.038 0.396-1.434 0l-2.152-2.151c-0.396-0.396-0.396-1.038 0-1.435l6.097-6.096-6.097-6.097c-0.396-0.396-0.396-1.039 0-1.435l2.153-2.151c0.396-0.396 1.038-0.396 1.434 0l6.096 6.097 6.097-6.097c0.396-0.396 1.038-0.396 1.435 0l2.151 2.152c0.396 0.396 0.396 1.038 0 1.435l-6.096 6.096z"></path></svg>Cancel</button>
         </td>
       `;
     } else if (e.target.classList.contains("deleteButton")) {
@@ -52,8 +52,8 @@ class EventListView {
                 <td>${event.startDate}</td>
                 <td>${event.endDate}</td>
                <td>
-                <button class="editButton" data-id="${event.id}">Edit</button>
-                <button class="deleteButton" data-id="${event.id}">Delete</button>
+                <button class="editButton" data-id="${event.id}"><svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EditIcon" aria-label="fontSize small"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>Edit</button>
+                <button class="deleteButton" data-id="${event.id}"><svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DeleteIcon" aria-label="fontSize small"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>Delete</button>
                 </td>
             `;
     });
@@ -112,47 +112,4 @@ class EventListController {
 
 const eventView = new EventListView("eventTable");
 const eventController = new EventListController({}, eventView);
-
-document.getElementById("addEventButton").addEventListener("click", () => {
-  const newRow = eventView.table.insertRow();
-  const nameInputCell = newRow.insertCell(0);
-  const startInputCell = newRow.insertCell(1);
-  const endInputCell = newRow.insertCell(2);
-  const actionCell = newRow.insertCell(3);
-
-  nameInputCell.innerHTML = '<input type="text" placeholder="Event Name">';
-  startInputCell.innerHTML = '<input type="date">';
-  endInputCell.innerHTML = '<input type="date">';
-
-  actionCell.innerHTML =
-    '<button class="createButton">Save</button><button class="cancelButton">Cancel</button>';
-});
-
-document.addEventListener("click", function (e) {
-  if (e.target && e.target.classList.contains("createButton")) {
-    const row = e.target.closest("tr");
-    const eventName = row.cells[0].querySelector("input").value;
-    const eventStart = row.cells[1].querySelector("input").value;
-    const eventEnd = row.cells[2].querySelector("input").value;
-
-    const event = new Event(eventName, eventStart, eventEnd);
-    eventController.addEvent(event);
-  }
-
-  if (e.target && e.target.classList.contains("updateButton")) {
-    const row = e.target.closest("tr");
-    const eventId = e.target.dataset.id;
-    const eventName = row.cells[0].querySelector("input").value;
-    const eventStart = row.cells[1].querySelector("input").value;
-    const eventEnd = row.cells[2].querySelector("input").value;
-
-    const updatedEvent = new Event(eventName, eventStart, eventEnd);
-    eventController.updateEvent(eventId, updatedEvent);
-  }
-
-  if (e.target && e.target.classList.contains("cancelButton")) {
-    const row = e.target.closest("tr");
-    row.remove();
-  }
-});
 
